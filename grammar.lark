@@ -1,0 +1,80 @@
+start: _NEWLINE? func_def*
+
+func_def: "func" NAME LPAR [parameters] RPAR "->" type ":" _NEWLINE _INDENT block _DEDENT
+
+parameters: param ("," param)*
+
+param: NAME ":" type
+
+type: "int" -> type_int
+     | "double" -> type_double
+     | "boolean" -> type_bool
+
+
+?statement: var_decl _NEWLINE
+	   | assignment _NEWLINE
+	   | return_stmt _NEWLINE
+	   | expr_stmt _NEWLINE
+	   | while_stmt
+	   | if_stmt
+	   | _NEWLINE
+
+block: statement+
+
+var_decl: "var" NAME ":" type ["=" expr] ";" 
+assignment: NAME "=" expr ";"
+return_stmt: "return" expr ";"
+expr_stmt: expr ";"
+
+while_stmt: "while" LPAR expr RPAR ":" _NEWLINE _INDENT block _DEDENT
+if_stmt: "if" LPAR expr RPAR ":" _NEWLINE _INDENT block _DEDENT ["else" ":" _NEWLINE _INDENT block _DEDENT]
+
+
+?expr: logical_or
+
+?logical_or: logical_and ("or" logical_and)* -> or_op
+?logical_and: comparison ("and" comparison)* -> and_op
+
+?comparison: arith_expr (COMP_OP arith_expr)* -> comp_op
+
+?arith_expr: term (ADD_OP term)* -> add_op
+?term: factor (MUL_OP factor)* -> mul_op
+
+?factor: "not" factor                          -> not_op
+       | "-" factor                            -> neg_op
+       | NAME LPAR [arguments] RPAR            -> fun_call
+       | NAME                                  -> var_ref
+       | literal
+       | LPAR expr RPAR                        -> paren_expr
+
+arguments: expr ("," expr)*
+
+literal: INT                                   -> int_lit
+       | DECIMAL                               -> double_lit
+       | "true"                                -> true_lit
+       | "false"                               -> false_lit
+       | STRING                                -> string_lit
+
+
+COMP_OP: "==" | "!=" | "<" | ">" | "<=" | ">="
+ADD_OP: "+" | "-"
+MUL_OP: "*" | "/"
+
+LPAR: "("
+RPAR: ")"
+
+NAME: /[a-zA-Z_][a-zA-Z0-9_]*/
+INT: /[0-9]+/
+DECIMAL: /[0-9]+\.[0-9]+/
+STRING: /"([^"\\]|\\.)*"/
+
+
+_NEWLINE: ( /\r?\n/ [/[\t ]*/] | COMMENT )+
+
+
+%import common.WS_INLINE
+%ignore WS_INLINE
+
+COMMENT: "#" /[^\n]*/
+
+%declare _INDENT _DEDENT
