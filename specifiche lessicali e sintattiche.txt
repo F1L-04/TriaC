@@ -1,0 +1,72 @@
+SPECIFICHE SINTATTICHE E LESSICALI DEL LINGUAGGIO TriaC
+
+
+?start: program
+program: function*
+
+function: "func" CNAME "(" [params] ")" "->" type ":" block
+
+params: param ("," param)*
+param: CNAME ":" type
+
+type: "int"     -> type_int
+    | "double"  -> type_double
+    | "boolean" -> type_bool
+
+block: _INDENT statement+ _DEDENT
+
+?statement: var_decl
+          | assignment
+          | if_statement
+          | while_statement
+          | return_stmt
+          | expr_stmt
+
+var_decl: "var" CNAME ":" type ["=" expr] ";"
+assignment: CNAME "=" expr ";"
+return_stmt: "return" expr ";"
+expr_stmt: expr ";"
+
+if_statement: "if" "(" expr ")" ":" block ["else" ":" block]
+while_statement: "while" "(" expr ")" ":" block
+
+?expr: logical_or
+
+?logical_or: logical_and ("or" logical_and)*
+?logical_and: comparison ("and" comparison)*
+?comparison: sum (COMP_OP sum)*
+?sum: term (ADD_OP term)*
+?term: factor (MUL_OP factor)*
+
+?factor: "not" factor         -> logical_not
+       | "-" factor            -> unary_minus
+       | CNAME "(" [args] ")"  -> func_call
+       | CNAME                 -> var_ref
+       | NUMBER                -> literal_num
+       | "true"                -> literal_true
+       | "false"               -> literal_false
+       | "(" expr ")"
+
+args: expr ("," expr)*
+
+
+
+
+SPECIFICHE LESSICALI (Terminali e Token)
+
+COMP_OP: "==" | "!=" | "<" | ">" | "<=" | ">="
+ADD_OP: "+" | "-"
+MUL_OP: "*" | "/"
+
+%declare _INDENT _DEDENT
+
+%import common.CNAME     
+%import common.NUMBER    
+%import common.WS_INLINE
+%import common.NEWLINE
+
+%ignore WS_INLINE
+
+# I commenti iniziano con il carattere # e continuano fino a fine riga
+COMMENT: /#[^\n]*/
+%ignore COMMENT
