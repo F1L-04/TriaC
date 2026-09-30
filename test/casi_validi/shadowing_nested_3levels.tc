@@ -1,0 +1,12 @@
+func main() -> int:
+    var val: int = 1;
+    var step: int = 0;
+    while (step < 1):
+        var val: double = 2.5;
+        if (true):
+            var val: int = 99;
+            print_int(val);
+        print_double(val);
+        step = step + 1;
+    print_int(val);
+    return 0;

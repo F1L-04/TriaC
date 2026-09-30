@@ -1,0 +1,5 @@
+func quadrato(x: int) -> int:
+    return x * x;
+
+func main() -> int:
+    return quadrato(true);

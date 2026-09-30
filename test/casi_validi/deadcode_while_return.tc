@@ -1,0 +1,7 @@
+func main() -> int:
+    var i: int = 0;
+    while (i < 3):
+        print_int(7);
+        return 0;
+        i = i + 1;
+    return 1;

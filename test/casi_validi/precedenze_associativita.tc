@@ -1,0 +1,5 @@
+func main() -> int:
+    print_int(10 - 3 - 2);
+    print_int(20 / 5 / 2);
+    print_int(2 + 3 * 4);
+    return 0;

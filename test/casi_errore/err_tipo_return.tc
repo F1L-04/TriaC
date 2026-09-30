@@ -1,0 +1,5 @@
+func val() -> int:
+    return 3.14;
+
+func main() -> int:
+    return val();

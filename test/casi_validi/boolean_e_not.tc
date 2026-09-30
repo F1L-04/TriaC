@@ -1,0 +1,6 @@
+func main() -> int:
+    var a: boolean = true;
+    var b: boolean = false;
+    if (a and not b):
+        print_string("OK");
+    return 0;

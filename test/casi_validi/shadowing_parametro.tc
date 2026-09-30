@@ -1,0 +1,9 @@
+func test_scope(val: int) -> int:
+    if (val > 0):
+        var val: double = 4.5;
+        print_double(val);
+    print_int(val);
+    return 0;
+
+func main() -> int:
+    return test_scope(10);

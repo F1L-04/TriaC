@@ -1,0 +1,6 @@
+func calc() -> int:
+    return 1;
+func calc() -> int:
+    return 2;
+func main() -> int:
+    return 0;

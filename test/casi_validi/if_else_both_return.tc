@@ -1,0 +1,10 @@
+func test_val(a: int) -> int:
+    if (a > 0):
+        return 100;
+    else:
+        return 200;
+
+func main() -> int:
+    print_int(test_val(5));
+    print_int(test_val(-5));
+    return 0;

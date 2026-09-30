@@ -1,0 +1,1 @@
+Tipo di ritorno non coerente nella funzione 'test'. Dichiarato 'int', ma restituito 'double'.

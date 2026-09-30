@@ -1,0 +1,52 @@
+func stampa_menu() -> int:
+    print_string("=== CALCOLATRICE INTERATTIVA TRIAC ===");
+    print_string("1. Addizione (+)");
+    print_string("2. Sottrazione (-)");
+    print_string("3. Moltiplicazione (*)");
+    print_string("4. Divisione (/)");
+    print_string("0. Esci");
+    return 0;
+
+func esegui_calcolo(scelta: int, a: double, b: double) -> double:
+    var ris: double = 0.0;
+    if (scelta == 1):
+        ris = a + b;
+    else:
+        if (scelta == 2):
+            ris = a - b;
+        else:
+            if (scelta == 3):
+                ris = a * b;
+            else:
+                if (scelta == 4):
+                    if (b != 0.0):
+                        ris = a / b;
+                    else:
+                        print_string("Errore: divisione per zero!");
+    return ris;
+
+func main() -> int:
+    var continua: int = 1;
+    var scelta: int = 0;
+    var dummy: int = 0;
+    var val1: double = 0.0;
+    var val2: double = 0.0;
+    var risultato: double = 0.0;
+
+    while (continua == 1):
+        dummy = stampa_menu();
+        scelta = read_int();
+
+        if (scelta == 0):
+            continua = 0;
+            print_string("Arrivederci!");
+        else:
+            if (scelta >= 1 and scelta <= 4):
+                val1 = read_double();
+                val2 = read_double();
+                risultato = esegui_calcolo(scelta, val1, val2);
+                print_double(risultato);
+            else:
+                print_string("Scelta non valida!");
+
+    return 0;

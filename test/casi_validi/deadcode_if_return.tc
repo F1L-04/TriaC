@@ -1,0 +1,6 @@
+func main() -> int:
+    var x: int = 3;
+    if (x > 0):
+        return 0;
+        print_int(99);
+    return 1;

@@ -1,0 +1,6 @@
+func main() -> int:
+    var i: int;
+    var d: double;
+    print_int(i);
+    print_double(d);
+    return 0;

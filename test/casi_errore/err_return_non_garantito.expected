@@ -1,0 +1,1 @@
+La funzione 'test_ret' non garantisce un'istruzione 'return' su tutti i percorsi di esecuzione.

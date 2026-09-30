@@ -1,0 +1,5 @@
+func test_ret(x: int) -> int:
+    if (x > 0):
+        return 1;
+func main() -> int:
+    return 0;

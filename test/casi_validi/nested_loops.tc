@@ -1,0 +1,11 @@
+func main() -> int:
+    var i: int = 0;
+    var tot: int = 0;
+    while (i < 2):
+        var j: int = 0;
+        while (j < 3):
+            tot = tot + 1;
+            j = j + 1;
+        i = i + 1;
+    print_int(tot);
+    return 0;

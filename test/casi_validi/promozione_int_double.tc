@@ -1,0 +1,10 @@
+func prendi_double(d: double) -> double:
+    return 5;
+
+func main() -> int:
+    var x: double = 10;
+    x = 20;
+    var y: double = prendi_double(3);
+    if (x > 15):
+        print_double(x + y);
+    return 0;

@@ -1,0 +1,8 @@
+func somma(a: double, b: double) -> double:
+    return a + b;
+
+func main() -> int:
+    var a: double = read_double();
+    var b: double = read_double();
+    print_double(somma(a, b));
+    return 0;

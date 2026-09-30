@@ -1,0 +1,9 @@
+func main() -> int:
+    var x: int = 10;
+    var i: int = 0;
+    while (i < 1):
+        var x: double = 3.14;
+        print_double(x);
+        i = i + 1;
+    print_int(x);
+    return 0;

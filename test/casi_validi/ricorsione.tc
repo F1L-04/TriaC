@@ -1,0 +1,9 @@
+func fattoriale(n: int) -> int:
+    if (n <= 1):
+        return 1;
+    else:
+        return n * fattoriale(n - 1);
+
+func main() -> int:
+    print_int(fattoriale(5));
+    return 0;
