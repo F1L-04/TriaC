@@ -33,7 +33,7 @@ TriaC è un linguaggio di programmazione fortemente tipizzato e *layout-sensitiv
 1. Clonare il repository o estrarre la cartella di progetto:
   ```bash
    git clone <url-repository>
-   cd compiler
+   cd TriaC
    ```
 
 2. Creare un ambiente virtuale isolato (venv):
